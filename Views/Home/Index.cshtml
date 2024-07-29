@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model ProductViewModel
+
+<div>
+    @foreach (var p in Model.Products)
+    {
+        <div class="card" style="width: 18rem; margin-bottom:10px; margin-top:10px;">
+            <img src=@p.ImgLink class="card-img-top" alt=@p.Name />
+            <div class="card-body">
+                <h5 class="card-title">@p.Name</h5>
+                <p class="card-text">@p.Description</p>
+                <p class="card-text">Price: @p.Price</p>
+                <p class="card-text">Discount: @p.Discount</p>
+                <a class="btn btn-primary" asp-action="Edit" asp-controller="Home" asp-route-id="@p.Id">Edit</a>
+                <a class="btn btn-primary" asp-action="Delete" asp-controller="Home" asp-route-id = "@p.Id">Delete</a>
+            </div>
+        </div>
+    }
+
+    <a class="btn btn-primary" asp-action="Add" asp-controller="Home">Add</a>
+</div>
